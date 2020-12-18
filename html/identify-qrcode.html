@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8">
+	<title>通过jQuery识别二维码</title>
+	<meta name="keywords" content="二维码识别，二维码解析，收款码识别" />
+    <meta name="description" content="通过jQuery识别二维码" />
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+</head>
+<body>
+	
+
+	<script src="https://brizer.github.io/static/js/llqrcode.js" type="text/javascript" charset="utf-8"></script>
+	<script src="https://brizer.github.io/static/js/analyticCode.js" type="text/javascript" charset="utf-8"></script>
+	<script>
+		function getUrl(e,param)
+	{
+		analyticCode.getUrl(
+			param,e,
+			function(url){
+			document.getElementById('qrcode').value=url;
+		}
+		)
+	}
+	</script>
+				
+		链接:
+		<input type="text" id="qrcode" placeholder="点击右侧按钮进行识别">
+		<input type="file" onChange="getUrl(this,'file-url')"/>
+				
+	
+	
+	
+	
+	
+
+</body>
+</html>
