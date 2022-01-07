@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #txt1 {
+            width: 300px;
+            height: 300px;
+        }
+        #txt2 {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <textarea id="txt1" ></textarea>
+
+    <button id="btn1">转化</button>
+    <textarea id="txt2"></textarea>
+    <script>
+        const btn = document.getElementById('btn1');
+        const txt1 = document.getElementById('txt1');
+        const txt2 = document.getElementById('txt2');
+        btn.addEventListener('click',function(){
+            let str = txt1.value;
+            // 第一步将font-size变为fontSize风格：
+            str = str.replace(/(.*)(-)(\w)(.*:)/ig, function($0, $1, $2 ,$3 ,$4){return `${$1}${$3.toUpperCase()}${$4}`});
+            // 第二步将px去掉
+            str = str.replaceAll('px','');
+            // 第三步将部分需要""的单独进行转化
+            str = str.replace(/(color|fontWeight):\s(.*);/ig,function($0, $1, $2){
+                console.log($0,$1,$2);
+                return $0.replace($2,`"${$2}"`)
+            })
+            txt2.value = str;
+        }, false)
+    </script>
+</body>
+</html>
